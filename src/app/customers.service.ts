@@ -1,5 +1,6 @@
 export class CustomersService {
     getCustomers() {
-        return ["Ania", "Kasia", "Zosia"];
+        return ["Wiesława", "Łucja", "Stanisław"]
     }
+
 }

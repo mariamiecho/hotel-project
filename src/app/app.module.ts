@@ -7,7 +7,7 @@ import { CustomersComponent } from './customers/customers.component';
 import { CustomersBrowserComponent } from './customers-browser/customers-browser.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CustomersService } from './customers/customers.service';
+import { CustomersService } from './customers.service';
 
 
 @NgModule({

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CustomersService } from '../customers.service';
 
 @Component({
   selector: 'browser',
@@ -15,5 +16,10 @@ import { Component } from '@angular/core';
 })
 export class CustomersBrowserComponent {
   title = "List of customers"
-  customers = ["Nina", "Gabrysia", "Białystok", "Mszczonów"]
+  customers;
+
+  constructor() {
+    let service = new CustomersService();
+    this.customers = service.getCustomers();
+  }
 }
