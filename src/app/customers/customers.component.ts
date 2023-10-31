@@ -1,17 +1,21 @@
 import { Component } from '@angular/core';
-import { CustomersService } from '../customers.service';
+
 
 @Component({
   selector: 'customers',
-  template: '<h2>Customers<h2>',
+  templateUrl: './customers.component.html',
   styleUrls: ['./customers.component.css']
 })
 export class CustomersComponent {
-  title = "List of customers";
-  customers;
 
-  constructor(service: CustomersService) {
-    this.customers = service.getCustomers();
+  isActive = true;
+
+  onDivClicked() {
+    console.log("Div was clicked");
+  }
+
+  onSave(event: any) {
+    console.log("Button was clicked", event)
   }
 }
 

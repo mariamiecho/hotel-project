@@ -1,1 +1,21 @@
-<p>fsdf</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="customers.component.css">
+</head>
+
+<body>
+    <button id="guzik" class="btn btn-danger" [style.backgroundColor]="isActive ? 'pink' : 'darkmagenta' ">Is Active? -
+        color</button>
+    <br>
+    <div (click)="onDivClicked()">
+        <button id="guzik1" (click)="onSave($event)" class="btn btn-danger">I want to break free</button>
+    </div>
+
+</body>
+
+</html>
