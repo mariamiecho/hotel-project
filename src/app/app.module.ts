@@ -8,6 +8,7 @@ import { CustomersBrowserComponent } from './customers-browser/customers-browser
 import { NavbarComponent } from './navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomersService } from './customers.service';
+import { SummaryPipe } from './summary.pipe';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { CustomersService } from './customers.service';
     AppComponent,
     CustomersComponent,
     CustomersBrowserComponent,
-    NavbarComponent
+    NavbarComponent,
+    SummaryPipe
   ],
   imports: [
     BrowserModule,

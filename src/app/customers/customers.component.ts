@@ -17,6 +17,25 @@ export class CustomersComponent {
   onSave(event: any) {
     console.log("Button was clicked", event)
   }
+
+  onKeyUp() {
+    console.log("Enter was pressed")
+  }
+
+  // onKeyUpEmail(email: any) {
+  //   console.log("enter")
+
+  customer = {
+    title: "Customers details:",
+    rating: 3.45673,
+    amount: 3294,
+    price: 2137,
+    freeDate: new Date(2054, 11, 11)
+
+
+
+  }
+
 }
 
 
