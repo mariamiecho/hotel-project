@@ -1,11 +1,11 @@
 #guzik {
-    margin: 10px;
+    margin-bottom: 10px;
     color: black;
 
 }
 
 #guzik1 {
-    margin: 10px;
+    margin-bottom: 10px;
     color: black;
 
 }
@@ -14,6 +14,11 @@
     margin: 10px;
 }
 
-#everything {
+body {
     margin: 10PX;
+}
+
+input {
+    margin: 5px;
+    display: block;
 }

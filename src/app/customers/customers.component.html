@@ -9,37 +9,42 @@
 </head>
 
 <body>
-    <div id="everything">
-        <button id="guzik" class="btn btn-danger" [style.backgroundColor]="isActive ? 'pink' : 'darkmagenta' ">Is
-            Active? -
-            color</button>
-        <br>
-        <div (click)="onDivClicked()">
-            <button id="guzik1" (click)="onSave($event)" class="btn btn-danger">I want to break free</button>
-        </div>
 
-        <!-- input to write in -->
-        <input placeholder="press enter" type="text" (keyup.enter)="onKeyUp()">
-
-        <!-- <input placeholder="email" type="email" #email id="email" (keyup.enter)="onKeyUpEmail()"> -->
-        <!-- <input [(ngModel)]="email" (keyup.enter)="onKeyUpEmail()"> -->
-        <div id="details">
-            <br>
-            {{customer.title | uppercase}}
-            <br>
-            Amount of customers:
-            {{customer.amount | number}}
-            <br>
-            Price per night
-            {{customer.price | currency: 'PLN ':true: '3.2-2' }}
-            <br>
-            Customer rating
-            {{customer.rating | number: '1.1-1'}}
-            <br>
-            Free Day
-            {{customer.freeDate | date}}
-        </div>
+    <button id="guzik" class="btn btn-danger" [style.backgroundColor]="isActive ? 'pink' : 'darkmagenta' ">Is
+        Active? -
+        color</button>
+    <br>
+    <div (click)="onDivClicked()">
+        <button id="guzik1" (click)="onSave($event)" class="btn btn-danger">I want to break free</button>
     </div>
+
+    <!-- input to write in -->
+    <input placeholder="press enter" type="text" (keyup.enter)="onKeyUp()">
+
+    <input [(ngModel)]="email" (keyup.enter)="onKeyUpEmail()">
+
+
+    <div id="details">
+        <br>
+        <b> {{customer.title | uppercase}}</b>
+        <br>
+        Amount of available rooms:
+        {{customer.rooms | number}}
+        <br>
+        Price per night:
+        {{customer.price | currency: 'PLN ':true: '3.0-0' }}
+        <br>
+        Customer rating:
+        {{customer.rating | number: '1.1-1'}}
+        <br>
+        Free Day:
+        {{customer.freeDate | date: 'shortDate'}}
+    </div>
+
+    <b>Hotel description:</b>
+    <br>
+    {{text | summary :40}}
+
 
 
 
