@@ -3,4 +3,10 @@ export class CustomersService {
         return ["Wiesława", "Łucja", "Stanisław"]
     }
 
+
+
+
+
+
+
 }

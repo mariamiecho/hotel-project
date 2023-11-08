@@ -10,7 +10,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomersService } from './customers.service';
 import { SummaryPipe } from './summary.pipe';
-
+import { HttpClientModule } from '@angular/common/http';
+import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +19,15 @@ import { SummaryPipe } from './summary.pipe';
     CustomersComponent,
     CustomersBrowserComponent,
     NavbarComponent,
-    SummaryPipe
+    SummaryPipe,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [
     CustomersService],
