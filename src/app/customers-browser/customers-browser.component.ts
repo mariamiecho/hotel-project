@@ -11,8 +11,8 @@ export class CustomersBrowserComponent {
   title = "List of customers"
   customers;
 
-  constructor() {
-    let service = new CustomersService();
+  constructor(private service: CustomersService) {
+    // let service = new CustomersService();
     this.customers = service.getCustomers();
   }
 }

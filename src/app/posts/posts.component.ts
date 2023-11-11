@@ -1,5 +1,7 @@
+import { CustomersService } from './../customers.service';
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
 
 
 
@@ -11,12 +13,11 @@ import { HttpClient } from '@angular/common/http';
 export class PostsComponent {
   posts: any;
 
-  constructor(http: HttpClient) {
-    http.get('https://jsonplaceholder.typicode.com/posts')
-      .subscribe(response => {
-        this.posts = Object.values(response);
+  constructor(private service: CustomersService) {
+    this.service.GetPost().then(
+      (data) => {
+        this.posts = data;
       })
 
   }
-
 }
