@@ -1,0 +1,13 @@
+<p>Reservstions from last week:</p>
+<!-- <ul>
+    <li *ngFor="let reservation of reservations">
+        {{reservation.title}}
+
+    </li>
+</ul> -->
+<tr>
+    <td *ngFor="let reservation of reservations">
+        {{reservation | json}}
+
+    </td>
+</tr>

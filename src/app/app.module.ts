@@ -12,6 +12,7 @@ import { CustomersService } from './customers.service';
 import { SummaryPipe } from './summary.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { PostsComponent } from './posts/posts.component';
+import { ReservationComponent } from './reservation/reservation.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PostsComponent } from './posts/posts.component';
     CustomersBrowserComponent,
     NavbarComponent,
     SummaryPipe,
-    PostsComponent
+    PostsComponent,
+    ReservationComponent
   ],
   imports: [
     BrowserModule,
