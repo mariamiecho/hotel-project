@@ -13,6 +13,7 @@ import { SummaryPipe } from './summary.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { PostsComponent } from './posts/posts.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ReservationComponent } from './reservation/reservation.component';
     NavbarComponent,
     SummaryPipe,
     PostsComponent,
-    ReservationComponent
+    ReservationComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

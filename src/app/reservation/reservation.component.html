@@ -18,7 +18,7 @@
         <tbody>
 
             <!-- This ruturn elements of tables like customer name -->
-            <tr *ngFor="let reservation of reservations">
+            <tr *ngFor="let reservation of reservationsLastWeek">
                 <td> {{reservation.id | number }}</td>
                 <td> {{reservation.customer.firstName }} {{reservation.customer.lastName}}</td>
                 <td> {{reservation.roomType}}</td>
