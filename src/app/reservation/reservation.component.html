@@ -1,35 +1,48 @@
-<h3>Reservstions from last week:</h3>
-<div>
-    <table class="table table-hover">
-        <thead class="table-danger">
-            <tr>
-                <td>ID</td>
-                <td>Customer</td>
-                <td>Room Type</td>
-                <td>Room Number</td>
-                <td>Room Check-in-Date</td>
-                <td>Room Check-out-Date</td>
-                <td>Price</td>
-                <td>Status</td>
-                <td>Date Updated</td>
-                <td>Notes</td>
-            </tr>
-        </thead>
-        <tbody>
+<!-- jeżeli są customers w liscie to wyświetla liste. Jeżeli nie ma to wyświetla komunikat że nie ma -->
+<h3>Reservstions from last week</h3>
+<div *ngIf="reservationsLastWeek.length > 0; then customerList; else noCustomers"> List of customers; </div>
 
-            <!-- This ruturn elements of tables like customer name -->
-            <tr *ngFor="let reservation of reservationsLastWeek">
-                <td> {{reservation.id | number }}</td>
-                <td> {{reservation.customer.firstName }} {{reservation.customer.lastName}}</td>
-                <td> {{reservation.roomType}}</td>
-                <td> {{reservation.room | number}}</td>
-                <td> {{reservation.dateArrival | date: 'shortDate' | date: 'dd/MM/yyyy' }}</td>
-                <td> {{reservation.dateDeparture | date: 'shortDate' | date: 'dd/MM/yyyy' }}</td>
-                <td>{{reservation.paymentAmount | currency: "PLN"}}</td>
-                <td>{{reservation.status}}</td>
-                <td>{{reservation.dateUpdated | date: 'longDate' | date: 'dd/MM/yyyy'}}</td>
-                <td>{{reservation.notes}}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+
+<ng-template #noCustomers>
+    <h4>No customers yet :[</h4>
+</ng-template>
+
+<!-- jeżeli jest lista to wyświtla się tablea -->
+<ng-template #customerList>
+    <h4>List of customers:</h4>
+
+    <div>
+        <table class="table table-hover">
+            <thead class="table-danger">
+                <tr>
+                    <td>ID</td>
+                    <td>Customer</td>
+                    <td>Room Type</td>
+                    <td>Room Number</td>
+                    <td>Room Check-in-Date</td>
+                    <td>Room Check-out-Date</td>
+                    <td>Price</td>
+                    <td>Status</td>
+                    <td>Date Updated</td>
+                    <td>Notes</td>
+                </tr>
+            </thead>
+            <tbody>
+
+                <!-- This ruturn elements of tables like customer name -->
+                <tr *ngFor="let reservation of reservationsLastWeek">
+                    <td> {{reservation.id | number }}</td>
+                    <td> {{reservation.customer.firstName }} {{reservation.customer.lastName}}</td>
+                    <td> {{reservation.roomType}}</td>
+                    <td> {{reservation.room | number}}</td>
+                    <td> {{reservation.dateArrival | date: 'shortDate' | date: 'dd/MM/yyyy' }}</td>
+                    <td> {{reservation.dateDeparture | date: 'shortDate' | date: 'dd/MM/yyyy' }}</td>
+                    <td>{{reservation.paymentAmount | currency: "PLN"}}</td>
+                    <td>{{reservation.status}}</td>
+                    <td>{{reservation.dateUpdated | date: 'longDate' | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{reservation.notes}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</ng-template>

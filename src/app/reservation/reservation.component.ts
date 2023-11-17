@@ -20,6 +20,7 @@ export class ReservationComponent {
     )
   }
 
+  //filture żeby pojawiali się tylko klienci sprzed tygodnia
   filterReservationsLastWeek() {
     const today = new Date();
     const lastWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7);

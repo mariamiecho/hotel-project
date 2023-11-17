@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PostsComponent } from './posts/posts.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { HomeComponent } from './home/home.component';
+import { PanelComponent } from './panel/panel.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HomeComponent } from './home/home.component';
     SummaryPipe,
     PostsComponent,
     ReservationComponent,
-    HomeComponent
+    HomeComponent,
+    PanelComponent
   ],
   imports: [
     BrowserModule,

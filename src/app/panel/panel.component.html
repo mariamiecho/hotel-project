@@ -1,0 +1,18 @@
+<div class="card card-defualt">
+    <div class="card-header">
+        <ng-content select=".header"></ng-content>
+    </div>
+    <div class="card-body">
+        <ng-content select=".body"></ng-content>
+    </div>
+</div>
+
+
+<button (click)="onAdd()"> Add </button>
+<ul>
+    <li *ngFor="let city of cities; even as isEven">
+        {{city.name}}
+        <!-- <span *ngIf="isEven(EVEN)"></span> -->
+        <!-- <button (click)="onRemove()">Remove</button> -->
+    </li>
+</ul>

@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 export class CustomersService {
     //List of customers
     getCustomers() {
-        return ["Wiesława", "Łucja", "Stanisław"]
+        return ["Wiesława", "Łucja", "Stanisław", "Przemysław"]
     }
     //Getting list of thinkgs form webside, adding it to customer service instead of component
     async GetPost(): Promise<Array<any>> {
