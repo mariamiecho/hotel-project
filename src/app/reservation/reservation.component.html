@@ -25,12 +25,13 @@
                     <td>Status</td>
                     <td>Date Updated</td>
                     <td>Notes</td>
+                    <td>Add notes</td>
                 </tr>
             </thead>
             <tbody>
 
                 <!-- This ruturn elements of tables like customer name -->
-                <tr *ngFor="let reservation of reservationsLastWeek">
+                <tr *ngFor="let reservation of reservationsLastWeek; let i = index">
                     <td> {{reservation.id | number }}</td>
                     <td> {{reservation.customer.firstName }} {{reservation.customer.lastName}}</td>
                     <td> {{reservation.roomType}}</td>
@@ -41,6 +42,14 @@
                     <td>{{reservation.status}}</td>
                     <td>{{reservation.dateUpdated | date: 'longDate' | date: 'dd/MM/yyyy'}}</td>
                     <td>{{reservation.notes}}</td>
+                    <!-- adding icon to click -->
+                    <td>
+                        <span (click)="toggleNoteEdit(i)">📝</span>
+                        <div *ngIf="reservation.editing">
+                            <textarea [(ngModel)]="reservation.newNote"></textarea>
+                            <button (click)="saveNote(i)">Save</button>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>

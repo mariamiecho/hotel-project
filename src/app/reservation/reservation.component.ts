@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CustomersService } from '../customers.service';
 import { filter } from 'rxjs';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-reservation',
@@ -11,7 +12,13 @@ export class ReservationComponent {
   reservations: any;
   reservationsLastWeek: any;
 
-  constructor(private service: CustomersService) {
+  // newNote: string = ' ';
+  // selectReservation: any;
+  // noteModelRef!: NgbModalRef;
+
+
+  constructor(private service: CustomersService,) {
+
     this.service.GetReservationList().then(
       (data) => {
         this.reservations = data;
@@ -32,5 +39,20 @@ export class ReservationComponent {
     }
     )
   }
+
+  //Funkcja ta przełącza tryb edycji dla notatek rezerwacji o podanym indeksie.
+  toggleNoteEdit(index: number): void {
+    this.reservationsLastWeek[index].editing = !this.reservationsLastWeek[index].editing;
+  }
+
+  //Pobiera zaktualizowaną notatkę z pola newNote dla konkretnej rezerwacji. Następnie dzieli notatkę na linie, usuwa puste linie i aktualizuje właściwość notes rezerwacji. Dodatkowo ustawia editing na false, aby wyłączyć tryb edycji.
+  saveNote(index: number): void {
+    const updatedNote = this.reservationsLastWeek[index].newNote;
+    this.reservationsLastWeek[index].notes = updatedNote.split('\n').filter((note: string) => note.trim() !== '');
+    this.reservationsLastWeek[index].editing = false;
+  }
+
+
+
 }
 
