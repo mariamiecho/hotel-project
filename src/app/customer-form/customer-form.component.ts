@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./customer-form.component.css']
 })
 export class CustomerFormComponent {
+  log(x: any) { console.log(x) }
+  submit(f: any) { console.log(f) }
 
 }

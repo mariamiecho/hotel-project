@@ -1,12 +1,20 @@
-<form>
+<form #f="ngForm" (ngSubmit)="submit(f)">
     <h3>Customer form: </h3>
     <div class="form-group">
         <label for=""></label>
-        <input id="firstName" type="text" class="form-control" placeholder="First Name">
+        <!-- <input id="firstName" type="text" class="form-control" placeholder="First Name"> -->
+        <input class="form-control" required minlength="3" maxlength="10" ngModel name="firstName" #firstName="ngModel"
+            (change)="log(firstName)" placeholder="First Name">
+
+        <div class="alert alert-danger" *ngIf="firstName.touched && firstName.invalid">
+            <div *ngIf="firstName.errors?.['required']">First name is required</div>
+            <div *ngIf="firstName.errors?.['minlength']">Minimum length is 3</div>
+        </div>
     </div>
     <div class="form-group">
         <label for="comment"></label>
         <textarea id="comment" cols="30" rows="10" class="fo" placeholder="Comment"></textarea>
     </div>
+    <div class="alert alert-danger" *ngIf="f.invalid">Error</div>
     <button class="btn btn-danger">Submit</button>
 </form>
