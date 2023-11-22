@@ -22,6 +22,7 @@
     <input placeholder="press enter" type="text" (keyup.enter)="onKeyUp()">
 
     <input [(ngModel)]="email" (keyup.enter)="onKeyUpEmail()">
+    <input type="text" appInputFormat placeholder="lower-case">
 
 
     <div id="details">
@@ -44,7 +45,7 @@
     <b>Hotel description:</b>
     <br>
     {{text | summary :40}}
-
+    <br>
 
 
 

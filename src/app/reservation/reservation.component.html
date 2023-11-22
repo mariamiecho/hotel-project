@@ -47,7 +47,8 @@
                         <span (click)="toggleNoteEdit(i)">📝</span>
                         <div *ngIf="reservation.editing">
                             <textarea [(ngModel)]="reservation.newNote"></textarea>
-                            <button (click)="saveNote(i)">Save</button>
+                            <button class="btn btn-danger" (click)="goBack(i)">Back</button>
+                            <button class="btn btn-danger" (click)="saveNote(i)">Save</button>
                         </div>
                     </td>
                 </tr>

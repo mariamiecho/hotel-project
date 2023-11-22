@@ -51,7 +51,9 @@ export class ReservationComponent {
     this.reservationsLastWeek[index].notes = updatedNote.split('\n').filter((note: string) => note.trim() !== '');
     this.reservationsLastWeek[index].editing = false;
   }
-
+  goBack(index: number): void {
+    this.reservationsLastWeek[index].editing = false;
+  }
 
 
 }
