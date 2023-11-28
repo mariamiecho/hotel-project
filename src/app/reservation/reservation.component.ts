@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CustomersService } from '../customers.service';
 import { filter } from 'rxjs';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
@@ -54,7 +54,6 @@ export class ReservationComponent {
   goBack(index: number): void {
     this.reservationsLastWeek[index].editing = false;
   }
-
 
 }
 
