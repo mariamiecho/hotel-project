@@ -2,6 +2,9 @@
 
 
 <router-outlet></router-outlet>
+<favorite [is-favorite]="post.isFavorite" (change)="onFavoriteChange()"></favorite>
+
+
 
 
 <!-- <div *ngIf="customers.length > 0; then customerList; else noCustomers"> List of customers; </div>

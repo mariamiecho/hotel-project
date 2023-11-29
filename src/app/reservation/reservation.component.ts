@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CustomersService } from '../customers.service';
 import { filter } from 'rxjs';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { FavoriteComponent } from '../favorite/favorite.component';
 
 @Component({
   selector: 'app-reservation',
@@ -23,6 +24,7 @@ export class ReservationComponent {
       (data) => {
         this.reservations = data;
         this.filterReservationsLastWeek();
+
       }
     )
   }
@@ -30,8 +32,9 @@ export class ReservationComponent {
   //filture żeby pojawiali się tylko klienci sprzed tygodnia
   filterReservationsLastWeek() {
     const today = new Date();
-    const lastWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7);
+    const lastWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 189);
     // const lastWeek = new Date(today.getTime() - 7*24*60*60*1000);
+
 
     this.reservationsLastWeek = this.reservations.filter((reservation: any) => {
       const reservationDate = new Date(reservation.dateUpdated);
@@ -55,5 +58,8 @@ export class ReservationComponent {
     this.reservationsLastWeek[index].editing = false;
   }
 
+  onFavoriteChange(eventArgs: any) {
+    console.log("Favorite changed ", eventArgs);
+  }
 }
 

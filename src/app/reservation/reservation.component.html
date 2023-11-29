@@ -1,6 +1,6 @@
 <!-- jeżeli są customers w liscie to wyświetla liste. Jeżeli nie ma to wyświetla komunikat że nie ma -->
 <h3>Reservstions from last week</h3>
-<div *ngIf="reservationsLastWeek.length > 0; then customerList; else noCustomers"> List of customers; </div>
+<div *ngIf="reservationsLastWeek?.length > 0; then customerList; else noCustomers"> List of customers; </div>
 
 
 <ng-template #noCustomers>
@@ -24,7 +24,7 @@
                     <td>Price</td>
                     <td>Status</td>
                     <td>Date Updated</td>
-                    <!-- <td>Favorite</td> -->
+                    <td>Favorite</td>
                     <td>Notes</td>
                     <td>Add notes</td>
                 </tr>
@@ -42,7 +42,10 @@
                     <td>{{reservation.paymentAmount | currency: "PLN"}}</td>
                     <td>{{reservation.status}}</td>
                     <td>{{reservation.dateUpdated | date: 'longDate' | date: 'dd/MM/yyyy'}}</td>
-
+                    <td>
+                        <favorite [is-favorite]="reservations.isFavorite" (change)="onFavoriteChange($event)">
+                        </favorite>
+                    </td>
                     <td>{{reservation.notes}}</td>
                     <!-- adding icon to click -->
                     <td>
