@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CustomersComponent } from './customers/customers.component';
@@ -18,6 +18,7 @@ import { PanelComponent } from './panel/panel.component';
 import { InputFormatDirective } from './input-format.directive';
 import { CustomerFormComponent } from './customer-form/customer-form.component';
 import { FavoriteComponent } from './favorite/favorite.component';
+import { ReservationFormComponent } from './reservation-form/reservation-form.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { FavoriteComponent } from './favorite/favorite.component';
     PanelComponent,
     InputFormatDirective,
     CustomerFormComponent,
-    FavoriteComponent
+    FavoriteComponent,
+    ReservationFormComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +42,7 @@ import { FavoriteComponent } from './favorite/favorite.component';
     NgbModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [
     CustomersService],

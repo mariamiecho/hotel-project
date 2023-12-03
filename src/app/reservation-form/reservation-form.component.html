@@ -1,0 +1,18 @@
+<form [formGroup]="form">
+    <div class="form-group">
+        <label for="name">Customer Name</label>
+        <input formControlName="name" id="name" type="text" class="form-control">
+        <div *ngIf="name?.touched && name?.invalid" class="alert alert-danger">
+            <div *ngIf="name?.errors?.['requiered']">Name requiered</div>
+            <div *ngIf="name?.errors?.['minLength']">Min 3 letters</div>
+            <!-- <div *ngIf="name?.errors?.cannot">Min 3 letters</div> -->
+
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="price">Price</label>
+        <input id="price" type="text" class="form-control">
+    </div>
+    <button class="btn btn-danger" type="submit">Sign Up</button>
+</form>
