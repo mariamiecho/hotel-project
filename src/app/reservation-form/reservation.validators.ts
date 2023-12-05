@@ -14,20 +14,15 @@ export class ReservationValidators {
         return Validators.min(9)(control);
     }
 
-    static shouldBeUnique(control: AbstractControl): Promise<ValidationErrors | null> {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                if (control.value === "maria")
-                    resolve({ shouldBeUnique: true });
-                else
-                    resolve(null);
-            }, 2000);
-        })
-    }
+    // static shouldBeUnique(control: AbstractControl): Promise<ValidationErrors | null> {
+    //     return new Promise((resolve, reject) => {
+    //         setTimeout(() => {
+    //             if (control.value === "maria")
+    //                 resolve({ shouldBeUnique: true });
+    //             else
+    //                 resolve(null);
+    //         }, 2000);
+    //     })
+    // }
 
 }
-// minmum price is 10, actual price = control.that?? value
-//return {minlength: {
-//requiredLength: 10,
-//actualLength: control.value.length
-// }}
