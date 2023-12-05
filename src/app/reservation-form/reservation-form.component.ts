@@ -11,7 +11,8 @@ import { ReservationValidators } from './reservation.validators';
 })
 export class ReservationFormComponent {
   form = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.minLength(3), ReservationValidators.cannotContainSpace]),
+    // name: new FormControl('', [Validators.required, Validators.minLength(3), ReservationValidators.cannotContainSpace]),
+    name: new FormControl('', [Validators.required, Validators.minLength(3), ReservationValidators.shouldBeUnique, ReservationValidators.cannotContainSpace]),
     // , ReservationValidators.cannotContainSpace]),
     price: new FormControl('', [Validators.required, ReservationValidators.minPrice]),
     // he wants customerName i price

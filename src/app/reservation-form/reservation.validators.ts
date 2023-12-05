@@ -1,4 +1,4 @@
-import { AbstractControl, Validators } from "@angular/forms";
+import { AbstractControl, ValidationErrors, Validators } from "@angular/forms";
 
 
 
@@ -13,6 +13,18 @@ export class ReservationValidators {
         const value = control.value as number;
         return Validators.min(9)(control);
     }
+
+    static shouldBeUnique(control: AbstractControl): Promise<ValidationErrors | null> {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (control.value === "maria")
+                    resolve({ shouldBeUnique: true });
+                else
+                    resolve(null);
+            }, 2000);
+        })
+    }
+
 }
 // minmum price is 10, actual price = control.that?? value
 //return {minlength: {

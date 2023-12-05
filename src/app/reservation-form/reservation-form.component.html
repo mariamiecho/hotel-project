@@ -5,10 +5,13 @@
             <div class="form-group" class="mx-auto">
                 <label for="name">Customer Name</label>
                 <input formControlName="name" id="name" type="text" class="form-control">
+                <div *ngIf="name?.pending">Cheking for unique...</div>
+                <!-- 96 filmik coś mi nie działa -->
                 <div *ngIf="name?.touched && name?.invalid" class="alert alert-danger">
                     <div *ngIf="name?.errors?.['required']">Name required</div>
                     <div *ngIf="name?.errors?.['minlength']">Min 3 letters</div>
                     <div *ngIf="name?.errors?.['cannotContainSpace']">Name can not contain space</div>
+                    <div *ngIf="name?.errors?.['shouldBeUnique']">Name should be unique</div>
 
                 </div>
             </div>
