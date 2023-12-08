@@ -1,17 +1,20 @@
 <div class="container">
     <div class="row justify-content-center">
-        <form [formGroup]="form" (ngSubmit)="SaveData()" class="col-md-5">
+        <!-- <form [formGroup]="form" (ngSubmit)="SaveData()" class="col-md-5"> -->
+        <form #customerForm="ngForm" (ngSubmit)="onSubmit(customerForm)" class="col-md-5">
             <h3>Reservation form: </h3>
-            <div class="form-group" class="mx-auto">
+            <div class="form-row" class="mx-auto">
                 <!-- CUSTOMER -->
-                <label for="name">Customer full name</label>
-                <input formControlName="name" id="name" type="text" class="form-control">
+                <div>
+                    <label for="name">Customer name</label>
+                    <input formControlName="name" id="name" type="text" class="form-control">
 
-                <!-- 96 filmik coś mi nie działa -->
-                <div *ngIf="name?.touched && name?.invalid" class="alert alert-danger">
-                    <div *ngIf="name?.errors?.['required']">Name required</div>
-                    <div *ngIf="name?.errors?.['minlength']">Min 3 letters</div>
+                    <!-- 96 filmik coś mi nie działa -->
+                    <div *ngIf="name?.touched && name?.invalid" class="alert alert-danger">
+                        <div *ngIf="name?.errors?.['required']">Name required</div>
+                        <div *ngIf="name?.errors?.['minlength']">Min 3 letters</div>
 
+                    </div>
                 </div>
             </div>
             <!-- ROOM TYPE -->
