@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { ReservationValidators } from './reservation.validators';
 import { HttpClient } from '@angular/common/http';
-import { Customer } from './customer';
+import { Customerr } from './customerrrr';
 
 @Component({
   selector: 'reservation-form',
@@ -11,7 +11,7 @@ import { Customer } from './customer';
 })
 export class ReservationFormComponent {
 
-  customer: Customer = {
+  customer: Customerr = {
     id: 0,
     tcNo: '',
     passportNo: '',

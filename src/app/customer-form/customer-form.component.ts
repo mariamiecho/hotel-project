@@ -36,6 +36,7 @@ export class CustomerFormComponent {
     this.httpClient.post('http://213.248.166.144:7070/customer/createCustomer', this.customer)
       .subscribe({
         next: response => {
+          alert('Customer created sucessfully')
           // Handle success response
           console.log('Customer created successfully:', response);
 
@@ -44,7 +45,15 @@ export class CustomerFormComponent {
         },
         error: error => {
           // Handle error
-          console.error('Error creating customer:', error);
+          if (error.status === 400)
+            alert('Bad Request Error')
+          if (error.status == - 500)
+            alert('Duplicate entry')
+          else {
+            alert('An unexpected error occured')
+            console.error('Error creating customer:', error);
+          }
+
         }
       });
   }

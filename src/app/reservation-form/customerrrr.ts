@@ -1,4 +1,4 @@
-export interface Customer {
+export interface Customerr {
     id: number;
     tcNo: string;
     passportNo: string;
