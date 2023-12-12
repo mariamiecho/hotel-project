@@ -26,6 +26,7 @@ export class CustomerFormComponent {
     notes: '',
   };
 
+
   constructor(private httpClient: HttpClient) { }
 
   onSubmit(form: NgForm) {
@@ -45,10 +46,12 @@ export class CustomerFormComponent {
         },
         error: error => {
           // Handle error
-          if (error.status === 400)
-            alert('Bad Request Error')
-          if (error.status == - 500)
-            alert('Duplicate entry')
+          if (error.status === 409)
+            alert('error 409: This customer already exist. Change TC No')
+          else if (error.status === 400)
+            alert('error 400: Bad Request Error')
+          else if (error.status === 500)
+            alert('error 500: This email is already used')
           else {
             alert('An unexpected error occured')
             console.error('Error creating customer:', error);
