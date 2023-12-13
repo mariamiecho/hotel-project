@@ -5,12 +5,14 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { HomeComponent } from './home/home.component';
 import { CustomerFormComponent } from './customer-form/customer-form.component';
 import { ReservationFormComponent } from './reservation-form/reservation-form.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
 
 const routes: Routes = [
   { path: 'reservation', component: ReservationComponent },
   { path: '', component: HomeComponent },
   { path: 'customer-form', component: CustomerFormComponent },
-  { path: 'reservation-form', component: ReservationFormComponent }
+  { path: 'reservation-form', component: ReservationFormComponent },
+  { path: 'aboutus', component: AboutusComponent }
 
 
 

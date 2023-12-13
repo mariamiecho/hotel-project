@@ -19,6 +19,7 @@ import { InputFormatDirective } from './input-format.directive';
 import { CustomerFormComponent } from './customer-form/customer-form.component';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { ReservationFormComponent } from './reservation-form/reservation-form.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ReservationFormComponent } from './reservation-form/reservation-form.co
     InputFormatDirective,
     CustomerFormComponent,
     FavoriteComponent,
-    ReservationFormComponent
+    ReservationFormComponent,
+    AboutusComponent
   ],
   imports: [
     BrowserModule,
