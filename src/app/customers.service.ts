@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Customer } from './customer-form/customer';
 import { catchError, throwError } from 'rxjs';
 import { DuplicateRecordError } from './common/duplicate-recordError';
+import { Apperror } from './common/apperror';
 
 
 
@@ -44,15 +45,12 @@ export class CustomersService {
         return this.http.post('http://213.248.166.144:7070/customer/createCustomer', customer).
             pipe(catchError((response: HttpErrorResponse) => {
                 if (response.status === 409) {
-                    return throwError(() => new DuplicateRecordError());
-
+                    throw new DuplicateRecordError('Customer already exists. Verify TC No and Email');
                 }
-                return throwError(() => new Error(response.message));
-
+                throw new Apperror('Rejected due to a server error');
 
             }));
     }
-
 
     checkIfCustomerAlreadyExist(tcNo: string, email: string): Promise<any> {
         var params = new HttpParams();
@@ -68,7 +66,4 @@ export class CustomersService {
             });
         });
     }
-
-
-
 }

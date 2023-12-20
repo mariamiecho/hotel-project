@@ -1,5 +1,6 @@
-export class Apperror {
-    constructor(public orginalError?: any) {
-
+export class Apperror extends Error {
+    constructor(message: string) {
+        super(message);
+        this.name = 'AppError';
     }
 }
