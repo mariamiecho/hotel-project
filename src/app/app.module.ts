@@ -20,6 +20,7 @@ import { CustomerFormComponent } from './customer-form/customer-form.component';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { ReservationFormComponent } from './reservation-form/reservation-form.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,10 @@ import { AboutusComponent } from './aboutus/aboutus.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    RouterModule.forRoot([
+      { path: 'aboutus', component: AboutusComponent }
+    ])
+
   ],
   providers: [
     CustomersService],

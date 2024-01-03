@@ -31,6 +31,7 @@ export class CustomersService {
     async GetReservationList(): Promise<Array<any>> {
         return new Promise((resolve, reject) => {
             this.http.get('http://213.248.166.144:7070/customer/lastReservations').subscribe(Response => {
+                // this.http.get('http://localhost:7070/customer/search').subscribe(Response => {
                 resolve(Object.values(Response));
             });
         });
@@ -65,5 +66,15 @@ export class CustomersService {
                 error: err => reject(err)
             });
         });
+
+    }
+    //get tours to get dropdown
+    getTours() {
+        return this.http.get<any[]>('http://localhost:7070/tours').pipe(
+            catchError((error) => {
+                console.error('Error fetching tours:', error);
+                return throwError(error);
+            })
+        );
     }
 }

@@ -1,9 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Customer } from './customer';
 import { NgForm } from '@angular/forms';
 import { CustomersService } from '../customers.service';
 import { DuplicateRecordError } from '../common/duplicate-recordError';
 import { Apperror } from '../common/apperror';
+
 
 
 
@@ -28,10 +30,22 @@ export class CustomerFormComponent {
     email: '',
     phone: '',
     notes: '',
+    selectTour: 0,
   };
   errors!: {};
+  tours: any[] = [];
 
-  constructor(private service: CustomersService) { }
+  constructor(private service: CustomersService, private http: HttpClient) { }
+  ngOnInit() {
+    this.service.getTours().subscribe(
+      (data) => {
+        this.tours = data;
+      },
+      (error) => {
+        console.error('Error fetching tours:', error);
+      }
+    );
+  }
 
   async onSubmit(form: NgForm) {
     this.errors = {};

@@ -19,7 +19,6 @@ export class ReservationComponent {
 
 
   constructor(private service: CustomersService,) {
-
     this.service.GetReservationList().then(
       (data) => {
         this.reservations = data;

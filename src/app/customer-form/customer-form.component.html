@@ -150,11 +150,24 @@
                 </div>
             </div>
 
+            <!-- TOUR -->
+            <div class="form-group">
+                <label for="tour">Select Tour:</label>
+                <select id="tour" name="tour" [(ngModel)]="customer.selectTour" class="form-control">
+                    <option value="0">Choose a Tour...</option>
+                    <option *ngFor="let tour of tours" [value]="tour.id">{{ tour.name }} {{tour.price}}</option>
+                </select>
+            </div>
+
+            <!-- NOTES -->
             <div class="form-group">
                 <label for="notes">Notes:</label>
                 <textarea id="notes" name="notes" [(ngModel)]="customer.notes" cols="57" rows="5"
                     class="form-control"></textarea>
             </div>
+
+
+
 
             <button class="btn btn-danger" type="submit" [disabled]="customerForm.invalid">Submit</button>
         </form>
