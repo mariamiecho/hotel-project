@@ -1,0 +1,22 @@
+<div>
+    <table class="table table-striped">
+        <thead class="table-danger">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Last name</th>
+                <th scope="col">TcNo</th>
+                <th scope="col">Create reservation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let customerlist of customerlist; let i = index">
+                <td>{{customerlist.firstName}} </td>
+                <td>{{customerlist.lastName}} </td>
+                <td>{{customerlist.tcNo}}</td>
+                <td><button class="btn btn-danger" (click)="onSelectCustomer(customerlist.id)">Create a
+                        reservation</button></td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>

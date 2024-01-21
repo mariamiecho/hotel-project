@@ -1,9 +1,10 @@
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Customer } from './customer-form/customer';
-import { catchError, throwError } from 'rxjs';
+import { catchError, map, throwError } from 'rxjs';
 import { DuplicateRecordError } from './common/duplicate-recordError';
 import { Apperror } from './common/apperror';
+
 
 
 
@@ -11,6 +12,7 @@ import { Apperror } from './common/apperror';
 @Injectable()
 
 export class CustomersService {
+
     //List of customers
     getCustomers() {
         return ["Wiesława", "Łucja", "Stanisław", "Przemysław"]
@@ -26,6 +28,11 @@ export class CustomersService {
     }
     constructor(private http: HttpClient) {
     }
+    selectedCustomerId?: number;
+    setSelectedCustomerId(customerId: number): void {
+        this.selectedCustomerId = customerId;
+    }
+
 
     //getting list of reservation from webside ASSIGNMENT
     async GetReservationList(): Promise<Array<any>> {
@@ -68,7 +75,7 @@ export class CustomersService {
         });
 
     }
-    //get tours to get dropdown
+    //get tours dropdown
     getTours() {
         return this.http.get<any[]>('http://localhost:7070/tours').pipe(
             catchError((error) => {
@@ -77,4 +84,38 @@ export class CustomersService {
             })
         );
     }
+
+    //get rooms dropdown
+    getRoomTypes() {
+        return this.http.get<any[]>('http://213.248.166.144:7070/customer/getRoomTypes').pipe(
+            catchError((error) => {
+                console.error('Error fetching room types:', error);
+                return throwError(error);
+            })
+        );
+    }
+
+    getCustomerList() {
+        return this.http.get<any[]>('http://213.248.166.144:7070/customer/search').pipe(
+            catchError((error) => {
+                console.error('Error fetching room types:', error);
+                return throwError(error);
+            })
+        );
+    }
+
+    getRoomNumbers(roomType: string) {
+        const params = new HttpParams().set('roomType', roomType);
+
+        return this.http.get<any[]>('http://213.248.166.144:7070/customer/allRooms', { params }).pipe(
+            catchError((error) => {
+                console.error('Error fetching room numbers:', error);
+                return throwError(error);
+            })
+        );
+    }
+
 }
+
+
+

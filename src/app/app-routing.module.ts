@@ -6,6 +6,8 @@ import { HomeComponent } from './home/home.component';
 import { CustomerFormComponent } from './customer-form/customer-form.component';
 import { ReservationFormComponent } from './reservation-form/reservation-form.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
+import { SearchComponent } from './search/search.component';
+
 
 
 
@@ -15,6 +17,7 @@ const routes: Routes = [
   { path: 'customer-form', component: CustomerFormComponent },
   { path: 'reservation-form', component: ReservationFormComponent },
   // { path: 'aboutus', component: AboutusComponent }
+  { path: 'search', component: SearchComponent }
 ];
 
 

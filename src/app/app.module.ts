@@ -21,6 +21,7 @@ import { FavoriteComponent } from './favorite/favorite.component';
 import { ReservationFormComponent } from './reservation-form/reservation-form.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { RouterModule } from '@angular/router';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { RouterModule } from '@angular/router';
     CustomerFormComponent,
     FavoriteComponent,
     ReservationFormComponent,
-    AboutusComponent
+    AboutusComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,14 @@
+.hotel-image {
+    width: 100vw;
+    /* Adjust the maximum width as needed / */
+    height: 100vh;
+    /* / Maintain the aspect ratio / */
+    /* opacity: 0.7; */
+    /* / Adjust the opacity level (0.0 to 1.0) / */
+    position: fixed;
+    /* / Fix the image position / */
+    top: 0;
+    left: 0;
+    z-index: -1;
+    /* / Place the image behind other elements */
+}

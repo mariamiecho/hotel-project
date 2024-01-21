@@ -13,5 +13,5 @@ export interface Customer {
     email: string;
     phone: string;
     notes: string;
-    selectTour: number;
+
 }

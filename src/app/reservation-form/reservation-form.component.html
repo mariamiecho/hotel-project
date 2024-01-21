@@ -1,70 +1,74 @@
 <div class="container">
     <div class="row justify-content-center">
-        <!-- <form [formGroup]="form" (ngSubmit)="SaveData()" class="col-md-5"> -->
-        <form #customerForm="ngForm" (ngSubmit)="onSubmit(customerForm)" class="col-md-5">
+        <form [formGroup]="reservationForm" (ngSubmit)="onSubmit(reservationForm)" class="col-md-5">
+
             <h3>Reservation form: </h3>
-            <div class="form-row" class="mx-auto">
-                <!-- CUSTOMER -->
-                <div>
-                    <label for="name">Customer name</label>
-                    <input formControlName="name" id="name" type="text" class="form-control">
+            <div class="form-row">
+                <!-- ID -->
+                <div class="col">
+                    <label for="id">Id</label>
+                    <input formControlName="id" type="text" class="form-control">
+                </div>
 
-                    <!-- 96 filmik coś mi nie działa -->
-                    <div *ngIf="name?.touched && name?.invalid" class="alert alert-danger">
-                        <div *ngIf="name?.errors?.['required']">Name required</div>
-                        <div *ngIf="name?.errors?.['minlength']">Min 3 letters</div>
+                <!-- CustomerId -->
+                <div class="col">
+                    <label for="CustomerId">Customer Id</label>
+                    <input formControlName="customerId" type="text" class="form-control">
 
-                    </div>
                 </div>
             </div>
+
             <!-- ROOM TYPE -->
             <div class="form-row">
                 <div class="col">
                     <label for="roomType">Room type</label>
-                    <select formControlName="roomType" id="roomType" type="text" class="form-control" required>
-                        <option value="">Select one...</option>
-                        <option value="sinlge">Single</option>
-                        <option value="double">Double</option>
-                        <option value="triple">Triple</option>
+                    <select id="roomType" name="roomType" formControlName="roomType" class="form-control"
+                        (change)="updateRoomNumbers()" required>
+                        <option value="0">Select one...</option>
+                        <option *ngFor="let roomType of roomTypes" [value]="roomType">{{ roomType }}</option>
                     </select>
-                    <div *ngIf="roomType?.touched && roomType?.invalid" class="alert alert-danger">
-                        <div *ngIf="roomType?.errors?.['required']">Room type required</div>
-                    </div>
                 </div>
-
 
                 <!-- ROOM NUMBER -->
                 <div class="col">
-                    <label>Room number</label>
-                    <input formControlName="roomNumber" id="roomNumber" type="text" class="form-control">
-                    <div *ngIf="roomNumber?.touched && roomNumber?.invalid" class="alert alert-danger">
-                        <div *ngIf="roomNumber?.errors?.['required']">Room number is required</div>
-                        <div *ngIf="roomNumber?.errors?.['cannotContainSpace']">Can not contain space</div>
-
-                    </div>
-                </div>
-
-                <!-- PRICE -->
-                <div class="col">
-                    <label for="price">Price</label>
-                    <input formControlName="price" id="price" type="text" class="form-control">
-                    <div *ngIf="price?.touched && price?.invalid" class="alert alert-danger">
-                        <div *ngIf="price?.errors?.['required']">Price is required</div>
-                        <div *ngIf="price?.errors?.['min']">At least 9PLN</div>
-                    </div>
+                    <label for="room">Room number</label>
+                    <select id="room" name="room" formControlName="room" class="form-control" required>
+                        <option value="0">Select one...</option>
+                        <option *ngFor="let roomNumber of roomNumbers" [value]="roomNumber.id">{{ roomNumber.name }}
+                        </option>
+                    </select>
                 </div>
             </div>
 
 
+            <!-- DATES -->
+            <div class="form-row">
+                <div class="col">
+                    <label>Arrival</label>
+                    <input type="date" formControlName="dateArrival" id="dateArrival" class="form-control">
+                </div>
+                <div class="col">
+                    <label>Departure</label>
+                    <input type="date" formControlName="dateDeparture" id="dateDeparture" class="form-control">
+                </div>
+            </div>
+            <!-- TOUR -->
+            <div class="form-group">
+                <label for="tour">Select Tour:</label>
+                <select id="tour" name="tour" formControlName="selectTour" class="form-control">
+                    <option value="0">Choose a Tour...</option>
+                    <option *ngFor="let tour of tours" [value]="tour.id">{{ tour.name }} {{tour.price}}</option>
+                </select>
+            </div>
+
             <!-- COMMENT -->
             <div class="form-group">
-                <label for="comment">Comment</label>
-                <textarea formControlName="comment" name="comment" id="comment" cols="56" rows="10"
+                <label for="notes">Notes</label>
+                <textarea formControlName="notes" name="notes" id="notes" cols="56" rows="10"
                     class="form-control"></textarea>
             </div>
 
             <!-- NOTES -->
-
             <button class="btn btn-danger" type="submit">Sign Up</button>
 
         </form>

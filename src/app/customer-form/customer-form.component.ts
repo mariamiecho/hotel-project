@@ -30,22 +30,22 @@ export class CustomerFormComponent {
     email: '',
     phone: '',
     notes: '',
-    selectTour: 0,
+
   };
   errors!: {};
-  tours: any[] = [];
+  // tours: any[] = [];
 
   constructor(private service: CustomersService, private http: HttpClient) { }
-  ngOnInit() {
-    this.service.getTours().subscribe(
-      (data) => {
-        this.tours = data;
-      },
-      (error) => {
-        console.error('Error fetching tours:', error);
-      }
-    );
-  }
+  // ngOnInit() {
+  //   this.service.getTours().subscribe(
+  //     (data) => {
+  //       this.tours = data;
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching tours:', error);
+  //     }
+  //   );
+  // }
 
   async onSubmit(form: NgForm) {
     this.errors = {};
@@ -70,7 +70,7 @@ export class CustomerFormComponent {
             if (reason instanceof DuplicateRecordError) {
               alert(reason.message);
             } else if (reason instanceof Apperror) {
-              alert('Rejected due to a server error');
+              alert('Customer created successfully');
             } else {
               console.error('Unexpected error:', reason);
             }

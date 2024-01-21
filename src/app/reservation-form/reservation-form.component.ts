@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
-import { ReservationValidators } from './reservation.validators';
+import { FormGroup, FormControl, Validators, NgForm, FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { Customerr } from './customerrrr';
+import { CustomersService } from '../customers.service';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'reservation-form',
@@ -11,94 +12,85 @@ import { Customerr } from './customerrrr';
 })
 export class ReservationFormComponent {
 
-  customer: Customerr = {
-    id: 0,
-    tcNo: '',
-    passportNo: '',
-    nationality: '',
-    firstName: '',
-    lastName: '',
-    middleName: '',
-    gender: 0,
-    streetAddress: '',
-    city: '',
-    country: '',
-    email: '',
-    phone: '',
-    notes: '',
-  };
+  reservationForm!: FormGroup;
 
-  constructor(private http: HttpClient) { }
+  tours: any[] = [];
+  roomTypes: any[] = [];
+  roomNumbers: any[] = [];
 
-  // SaveData() {
-  //   if (this.form.valid) {
-  //     const formData = this.form.value;
-  //     this.http.post('http://213.248.166.144:7070/swagger-ui/index.html', formData)
-  //       .subscribe(
-  //         (response: any) => {
-  //           console.log('API response:', response);
-  //           this.form.reset();
-  //         },
-  //         (error: any) => {
-  //           console.error('Error submitting data:', error);
-  //         }
-  //       );
-  //   } else {
-  //     this.markFormGroupTouched(this.form);
-  //   }
-  // }
-  onSubmit(form: NgForm) {
+  constructor(private formBuilder: FormBuilder, private service: CustomersService, private http: HttpClient, private route: ActivatedRoute) { }
+  ngOnInit() {
+    this.reservationForm = this.formBuilder.group({
+      id: [0, Validators.required],
+      customerId: [0, Validators.required],
+      selectTour: [0, Validators.required],
+      roomType: [0, Validators.required],
+      room: ['', Validators.required],
+      dateArrival: [new Date(), Validators.required],
+      dateDeparture: [new Date(), Validators.required],
+      notes: ''
+    });
+
+    this.route.paramMap.subscribe(params => {
+      const customerId = +params.get('customerId')! || 0;
+      if (customerId !== null) {
+        this.reservationForm.patchValue({
+          customerId: customerId
+        });
+      }
+    });
+
+    this.service.getTours().subscribe(
+      (data) => {
+        this.tours = data;
+      },
+      (error) => {
+        console.error('Error fetching tours:', error);
+      }
+    );
+
+    this.service.getRoomTypes().subscribe(
+      (data) => {
+        this.roomTypes = data;
+      },
+      (error) => {
+        console.error('Error fetching rooms types', error);
+      }
+    );
+  }
+  updateRoomNumbers() {
+    const selectedRoomType = this.reservationForm.get('roomType')?.value;
+    if (selectedRoomType) {
+      this.service.getRoomNumbers(selectedRoomType).subscribe(
+        (data) => {
+          this.roomNumbers = data.filter(room => room.type === selectedRoomType);
+        },
+        (error) => {
+          console.error('Error fetching room numbers:', error);
+        }
+      );
+    }
+  }
+
+
+
+  onSubmit(form: FormGroup) {
     // Handle form submission logic here
-    console.log(this.customer);
+    console.log(form.value);
 
     // Call the createCustomer API
-    this.http.post('http://213.248.166.144:7070/customer/createCustomer', this.customer)
+    this.http.post('http://213.248.166.144:7070/customer/createReservation', form.value)
       .subscribe({
         next: response => {
-          // Handle success response
+          alert('Customer created successfully');
           console.log('Customer created successfully:', response);
-
-          // Optionally, reset the form after successful submission
-          form.resetForm();
+          form.reset();
         },
         error: error => {
-          // Handle error
           console.error('Error creating customer:', error);
         }
       });
   }
-
-
-
-  form = new FormGroup({
-
-    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-
-    roomType: new FormControl('', [Validators.required]),
-
-    roomNumber: new FormControl('', [Validators.required, ReservationValidators.cannotContainSpace]),
-
-    price: new FormControl('', [Validators.required, ReservationValidators.minPrice]),
-
-    comment: new FormControl('')
-
-  });
-  get name() {
-    return this.form.get('name');
-  }
-
-  get roomType() {
-    return this.form.get('roomType');
-  }
-  get roomNumber() {
-    return this.form.get('roomNumber');
-  }
-
-  get price() {
-    return this.form.get('price');
-  }
-
-
 
   private markFormGroupTouched(formGroup: FormGroup) {
     Object.values(formGroup.controls).forEach(control => {

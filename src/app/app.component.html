@@ -1,9 +1,13 @@
 <navbar></navbar>
 
+<div *ngIf="isHomePage()">
+    <img class="hotel-image" src="assets/img/yellowstone.jpeg" alt="hotel-image">
 
+</div>
 <router-outlet></router-outlet>
 
-<favorite [is-favorite]="post.isFavorite" (change)="onFavoriteChange()"></favorite>
+
+<!-- <favorite [is-favorite]="post.isFavorite" (change)="onFavoriteChange()"></favorite> -->
 
 
 
